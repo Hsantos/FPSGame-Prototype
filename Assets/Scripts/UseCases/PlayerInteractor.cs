@@ -18,10 +18,6 @@ public class PlayerInteractor :  Interactor<IPlayerOutput> {
         return new Vector3(posX, posY,posZ);
     }
     
-    public void LookForNearestNeighbour() {
-        //findNearestNeighbour
-        //output
-    }
 
     public void UpdateMovement(float speed, Vector3 position, float distance) {
         output.UpdateMovement(Vector3.Lerp(position,currentDestiny, speed * Time.deltaTime));

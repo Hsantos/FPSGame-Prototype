@@ -6,17 +6,21 @@ public class PlayerSpawnerController : ControllerMonoBehaviour<PlayerInteractor,
     [SerializeField] private HudController hudController;
 
 
-    private readonly List<PlayerController> players = new List<PlayerController>();
+    private readonly KdTree<PlayerController> players = new KdTree<PlayerController>();
     void Start() {
         hudController.Initiate(this);
     }
 
-
     private void SpawnPlayers(int totalPlayers) {
         for (var i = 0; i < totalPlayers; i++) {
             var player = polling.GetObjectInThePool().GetComponent<PlayerController>();
-            player.Initiate();
             players.Add(player);
+            player.name = "Player" + i;
+        }
+        
+        //after create, they need to know the list of active players
+        for (var i = 0; i < totalPlayers; i++) {
+            players[i].Initiate(players);
         }
     }
 
@@ -26,10 +30,15 @@ public class PlayerSpawnerController : ControllerMonoBehaviour<PlayerInteractor,
     }
 
     private void DeletePlayers() {
-        players.ForEach(p => {
-            polling.ReturnObjectInThePool(p.gameObject);
-        });
-        
+        foreach (var t in players) {
+            polling.ReturnObjectInThePool(t.gameObject);
+        }
+
         players.Clear();
+        players.UpdatePositions();
+    }
+    
+    private void FixedUpdate() {
+        players.UpdatePositions();
     }
 }
