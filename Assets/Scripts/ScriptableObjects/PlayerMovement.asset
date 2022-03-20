@@ -22,3 +22,5 @@ MonoBehaviour:
     zPosition:
       Min: -10
       Max: 10
+    speedMovement: 0.5
+    distance: 1

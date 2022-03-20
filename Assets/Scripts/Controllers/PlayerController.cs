@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 
 public class PlayerController : ControllerMonoBehaviour<PlayerInteractor, IPlayerOutput> {
@@ -10,14 +11,19 @@ public class PlayerController : ControllerMonoBehaviour<PlayerInteractor, IPlaye
     public void Initiate() {
         interactor.SetInitialPosition(playerMovement.PlayerMovement);
 
-
-        var nearestNeighbour = findNearestNeighbour.GetNext();
+       /* var nearestNeighbour = findNearestNeighbour.GetNext();
         lineRenderer.SetPosition(0, new Vector3(transform.localPosition.x,
             transform.localPosition.y,
             transform.localPosition.z));
         
         lineRenderer.SetPosition(1, new Vector3(nearestNeighbour.transform.localPosition.x,
             nearestNeighbour.transform.localPosition.y,
-            nearestNeighbour.transform.localPosition.z));
+            nearestNeighbour.transform.localPosition.z));*/
+    }
+
+    private void FixedUpdate() {
+        interactor.UpdateMovement(playerMovement.PlayerMovement.speedMovement,
+                                    transform.localPosition,
+                                    playerMovement.PlayerMovement.distance);
     }
 }
