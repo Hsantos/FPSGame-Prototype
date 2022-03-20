@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="Common" t="Include">
+            <e p="Architecture" t="Include">
+              <e p="CleanArchitecture" t="Include">
+                <e p="ControllerMonoBehaviour.cs" t="Include" />
+                <e p="Interactor.cs" t="Include" />
+              </e>
+            </e>
+            <e p="DesignPatterns" t="Include">
+              <e p="ObjectPooling" t="Include">
+                <e p="ObjectPoolingMonoBehaviour.cs" t="Include" />
+              </e>
+              <e p="Observer" t="Include">
+                <e p="IObservable.cs" t="Include" />
+                <e p="IObserver.cs" t="Include" />
+                <e p="ObservableMonoBehaviour.cs" t="Include" />
+                <e p="ScreenButtonView.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Controllers" t="Include">
+            <e p="BallController.cs" t="Include" />
+            <e p="PlayerSpawnerController.cs" t="Include" />
+            <e p="RocketController.cs" t="Include" />
+            <e p="TankController.cs" t="Include" />
+          </e>
+          <e p="Model" t="Include">
+            <e p="GameSettings.cs" t="Include" />
+          </e>
+          <e p="Presenters" t="Include">
+            <e p="BallPresenter.cs" t="Include" />
+            <e p="GameView.cs" t="Include" />
+            <e p="HudView.cs" t="Include" />
+            <e p="RocketPresenter.cs" t="Include" />
+            <e p="ScoreGoalView.cs" t="Include" />
+            <e p="ScoreView.cs" t="Include" />
+            <e p="TankPresenter.cs" t="Include" />
+            <e p="WallView.cs" t="Include" />
+          </e>
+          <e p="ScriptableObjects" t="Include">
+            <e p="GameSettingsScriptableObject.cs" t="Include" />
+          </e>
+          <e p="Services" t="Include">
+            <e p="PlayerMessage.cs" t="Include" />
+          </e>
+          <e p="Startup.cs" t="Include" />
+          <e p="UseCases" t="Include">
+            <e p="BallInteractor.cs" t="Include" />
+            <e p="IBallOutput.cs" t="Include" />
+            <e p="IRocketOutput.cs" t="Include" />
+            <e p="ITankOutput.cs" t="Include" />
+            <e p="RocketInteractor.cs" t="Include" />
+            <e p="TankInteractor.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="FPSGame-Prototype.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp/Bin" t="ExcludeRecursive" />
+    </e>
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.2/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.2/resharper-host/local/Transient/Rider/v202/SolutionCaches/_FPSGame-Prototype.-1319891959.00" t="ExcludeRecursive" />
+  </component>
+</project>
