@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerSpawnerController : ControllerMonoBehaviour<PlayerInteractor, IPlayerOutput>, IObserver<int> {
     [SerializeField] private ObjectPoolingMonoBehaviour polling;
     [SerializeField] private HudController hudController;
+    [SerializeField] private ScorePanelController scorePanelController;
 
 
     private readonly KdTree<PlayerController> players = new KdTree<PlayerController>();
@@ -16,6 +17,7 @@ public class PlayerSpawnerController : ControllerMonoBehaviour<PlayerInteractor,
             var player = polling.GetObjectInThePool().GetComponent<PlayerController>();
             players.Add(player);
             player.name = "Player" + i;
+            player.UpdateData = MakeScore;
         }
         
         //after create, they need to know the list of active players
@@ -40,5 +42,9 @@ public class PlayerSpawnerController : ControllerMonoBehaviour<PlayerInteractor,
     
     private void FixedUpdate() {
         players.UpdatePositions();
+    }
+
+    private void MakeScore(PlayerData playerData) {
+        scorePanelController.MakeScore(playerData);
     }
 }

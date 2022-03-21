@@ -1,6 +1,6 @@
-
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : ControllerMonoBehaviour<PlayerInteractor, IPlayerOutput> {
 
@@ -10,10 +10,14 @@ public class PlayerController : ControllerMonoBehaviour<PlayerInteractor, IPlaye
 
     private bool startMovement;
     private KdTree<PlayerController> players;
+    private int hits;
+
+    public UnityAction<PlayerData> UpdateData;
+    
     public void Initiate(KdTree<PlayerController> players) {
         this.players = players;
         interactor.SetInitialPosition(playerMovement.PlayerMovement);
-        
+        hits = 0;
         startMovement = true;
     }
 
@@ -31,6 +35,15 @@ public class PlayerController : ControllerMonoBehaviour<PlayerInteractor, IPlaye
             var nearestNeighbour = findNearestNeighbour.GetNext(players);
             lineRenderer.SetPosition(0, transform.position);
             lineRenderer.SetPosition(1, nearestNeighbour.transform.position);
+        }
+    }
+    
+   
+    private void OnTriggerEnter(Collider other) {
+        if (other.transform.GetComponent<PlayerController>()) {
+            // collide with another player, update hit
+            hits++;
+            UpdateData?.Invoke(new PlayerData(name, hits));
         }
     }
 }
